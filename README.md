@@ -4,6 +4,7 @@
 ## Contexte biologique
 
 Nous allons reproduire certaines analyses rapportées dans une étude du réseau d'interaction des protéines du [virus d'Epstein-Bar](https://en.wikipedia.org/wiki/Epstein%E2%80%93Barr_virus) avec certaines protéines de son hôte principal l'homme ([Calderwood et al.](https://www.pnas.org/content/104/18/7606)). Le cible cellulaire principale du virus EBV est lymphocyte B humain.  
+pmid : 17446270
 
 ## Mise en place
 Vous commencerez par "fourcher" et cloner ce repository.
@@ -36,12 +37,12 @@ Par exemple, les 100 premières interactions protéine-protéine humaines dispon
 
 Numero de champ | Signification Biologique|
  --- | --- 
-1 | 
-2 |
-3 |
-4 |
-5 |
-6 |
+1 | identifier A
+2 | identifier B
+3 | identifiers A or B
+4 | identifiers A or B
+5 | Identifiers (A or B) or Aliases (A or B)
+6 | Identifiers (A or B) or Aliases (A or B)
 
 ##### Utiliser le PMID de la publication pour récuperer les lignes MITAB des interactions rapportées dans l'étude.
 Une librairie pratique pour manipuler des requêtes HTTP est [requests](https://requests.readthedocs.io/en/master/), eg:
@@ -60,7 +61,7 @@ ans = httpReq.text
 ##### Quelles techniques experimentales mesurent les interactions rapportées dans cette publication?
 
 ```
-
+Yeast-Two Hybrid
 ```
 
 #### Extraction des deux sous-jeux d'interactions
@@ -113,6 +114,7 @@ print(f"Nombre total d'interactions {total}, EBV-EBV {len(EBV_EBV_mitab)}")
 
 ##### Que fait la fonction `mitabReader` ?
 ```
+Lit la requet URL et formatte la réponse
 ```
 
 ##### Après avoir réparé ce code veuillez
@@ -124,7 +126,7 @@ print(f"Nombre total d'interactions {total}, EBV-EBV {len(EBV_EBV_mitab)}")
 ##### Combien de protéines humaines et virales sont respectivement dans les jeux d'interactions EBV-Human et EBV-EBV ?
 
 ```
-
+48 protéines virales dans EBV-EBV, 113 human proteins and  41 viral proteins are involved in the EBV-Human interactions
 ```
 
 ###### Pour la suite du travail assurez-vous d'avoir les deux jeux de données MITAB suivants
